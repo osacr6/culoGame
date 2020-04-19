@@ -8,22 +8,31 @@ document.head.insertAdjacentHTML('beforeend', `<style>${css}</style>`);
 waitFor( () => {
   return void 0 !== window.$;
 }, () => {
+  const table = document.querySelector('.c-table');
+  const group = table.querySelector('ul');
   const game = document.querySelector('.c-table-game');
-  const players = 4; // GAME FOR 4 PLAYERS
-  const cards = generate(players);
+  
+  const players = 4; // GAME FOR x PLAYERS
+  const deck = generate(players);
   let playerCards = [];
   let currentPlayer = 0;
 
+  group.classList = `c-group-${players}`;
+
+  //array for each plaper
   for (let i = 0; i < players; i++) {
     playerCards[i] = [];
+    group.insertAdjacentHTML('beforeend', `<li class="c-gamer c-gamer-${i}"></li>`); // position in the table
   }
 
-  for (let j = cards.length -1; j > -1; j--) {
+  //pop each card from deck 
+  for (let j = deck.length -1; j > -1; j--) {
     currentPlayer = currentPlayer < players ? currentPlayer : 0;
-    playerCards[currentPlayer].push(cards.pop());
+    playerCards[currentPlayer].push(deck.pop());
     currentPlayer++;
   }
 
+  //deliver ui deck based on position
   [].slice.call(document.querySelectorAll('.c-gamer'))
     .filter(function (item, i) {
       game.insertAdjacentHTML('beforeend', barajaTpl(i, playerCards));
@@ -37,7 +46,6 @@ waitFor( () => {
       return item;
     });
 
-  // https://tympanus.net/Development/Baraja/
   $('.c-cemetery-cards').baraja();
 
   /*$( '#add' ).on( 'click', function( event ) {

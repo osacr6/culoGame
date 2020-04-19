@@ -35,3 +35,6 @@ const server = http.createServer(app);
 
 // EL SERVIDOR ESTA ESCUCHANDO PETICIONES
 server.listen(port, () => console.log(`La magia pasa en localhost:${port}`));
+
+//SOCKET.IO 2.0 IS HERE
+app.locals.socket = require('socket.io')(server);

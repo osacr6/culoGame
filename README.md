@@ -1,18 +1,16 @@
 # culoGame
 
- Enjoy Culo Game
+Enjoy Culo Game
 
 ## Technologies
-
   - nodejs
-  -  es6
-  - webpack
 
 ## Getting Started
 
 Dependencies
   - git
   - nodejs
+  - webpack
 
 ### Installation
 ```
@@ -23,3 +21,6 @@ Dependencies
 ```
   npm start
 ```
+
+### libraries
+- https://tympanus.net/Development/Baraja/
