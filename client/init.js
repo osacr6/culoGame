@@ -37,7 +37,7 @@ waitFor( () => {
       return item;
     });
 
-    // https://tympanus.net/Development/Baraja/
+  // https://tympanus.net/Development/Baraja/
   $('.c-cemetery-cards').baraja();
 
   /*$( '#add' ).on( 'click', function( event ) {
