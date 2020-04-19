@@ -3,6 +3,11 @@
   "author": "Daniel",
   "name": "CULO",
   "description": "Hoy si Serás presidente!",
+  "scripts": {
+    "init-assets": "npx webpack",
+    "init-server": "node server.js",
+    "start": "start npm run init-assets && start npm run init-server"
+  },
   "devDependencies": {
     "@babel/core": "^7.1.5",
     "@babel/preset-env": "^7.1.5",

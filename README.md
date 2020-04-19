@@ -1,22 +1,25 @@
 # culoGame
+
+ Enjoy Culo Game
+
+## Technologies
+
   - nodejs
   -  es6
   - webpack
 
 ## Getting Started
 
+Dependencies
+  - git
+  - nodejs
+
 ### Installation
-Install dependencies 
 ```
-install git
-install nodejs
 > npm install
 ```
-### build
-```
-> npx webpack
-```
+
 ### Run
 ```
-  node server.js
+  npm start
 ```
