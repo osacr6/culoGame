@@ -19,7 +19,7 @@ Dependencies
 
 ### Run
 ```
-  npm start
+>  npm start
 ```
 
 ### libraries
