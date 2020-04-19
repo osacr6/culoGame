@@ -1,0 +1,65 @@
+$prefix: 'c';
+
+@import 'baraja.scss';
+@import 'cards.scss';
+
+.#{$prefix} {
+
+  &-wrapper {
+    background-image: url('/img/mesa.png');
+    height: 100vh;
+    width: 100%;
+    background-size: 100% 100%;
+  }
+
+  &-table {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+  }
+
+  &-gamer {
+     position: absolute;
+  }
+
+  &-group  {
+
+    &-4 li{
+    
+       &:nth-child(1) {
+         top: -130px;
+        left: -140px;
+        transform: rotate(90deg);
+      }
+       &:nth-child(2) {
+         top: -250px;
+        left: -25px;
+        transform: rotate(180deg);
+       }
+       &:nth-child(3) {
+         top: -80px;
+        left: 70px;
+          transform: rotate(270deg);
+       }
+       &:nth-child(4) {
+           top: 120px;
+          left: -25px;
+       }
+    }
+  }
+
+  &-cemetery {
+    position: absolute;
+    width: 64px;
+    top: 40%;
+    left: 35%;
+
+    &-cards {
+      width: 100%;
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
