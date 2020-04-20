@@ -38,7 +38,7 @@ module.exports = {
         "abstract" 
       }
     }],
-    "require-jsdoc": ["warn", {
+    "require-jsdoc": ["off", {
       "require": { 
         "FunctionDeclaration": true,
         "MethodDefinition": true, 

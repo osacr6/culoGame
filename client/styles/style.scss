@@ -3,7 +3,25 @@ $prefix: 'c';
 @import 'baraja.scss';
 @import 'cards.scss';
 
+
+body {
+  overflow-x: hidden;
+  margin: 0;
+}
+
+li {
+  list-style: none;
+}
+
 .#{$prefix} {
+
+  &-close {
+    display: none;
+  }
+
+  &-open {
+    display: block;
+  }
 
   &-wrapper {
     background-image: url('/img/mesa.png');
@@ -19,7 +37,7 @@ $prefix: 'c';
   }
 
   &-gamer {
-     position: absolute;
+    position: absolute;
   }
 
   &-group  {
@@ -93,6 +111,54 @@ $prefix: 'c';
       img {
         width: 100%;
       }
+    }
+  }
+
+  &-sidebar {
+    position: absolute;
+    height: 110px;
+    bottom: 20px;
+    overflow: hidden;
+
+    ul {
+      width: 1000px;
+      padding: 0;
+      margin: 30px 0;
+    }
+
+    li {
+      display: inline;
+    }
+
+    img {
+      width: 50px;
+      height: 80px;
+    }
+  }
+
+  &-selected {
+
+    .overlay {
+      position: absolute;
+
+      &::after {
+        background-image: url('/img/check.png');
+        background-size: 100% 100%;
+        content: '';
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        left: 10px;
+        top: 20px;
+      }
+    }
+  }
+
+  &-toolbar {
+    width: 98vw;
+
+    button {
+      float: right;
     }
   }
 }

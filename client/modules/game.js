@@ -37,7 +37,7 @@ export const orderCards = (a) => {
   });
 
   // Add the cards in cardsOrdened with the order of orderValue array and with the information of a array
-  for (let i = orderValue.length - 1; i > 0; i--) {
+  for (let i = orderValue.length - 1; i >= 0; i--) {
     let cardPosition = orderValue[i].value;
     cardsOrdened[i]= a[cardPosition]
   }

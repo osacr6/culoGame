@@ -1,6 +1,6 @@
 import css from './styles/style.scss';
 import barajaTpl from './templates/baraja.js';
-import generate from './modules/game.js';
+import {generate, orderCards} from './modules/game.js';
 import waitFor from './utils/wait-for.js';
 
 document.head.insertAdjacentHTML('beforeend', `<style>${css}</style>`);
@@ -11,6 +11,10 @@ waitFor( () => {
   const table = document.querySelector('.c-table');
   const group = table.querySelector('ul');
   const game = document.querySelector('.c-table-game');
+  const cemeteryDeck = $('.c-cemetery-cards').baraja();
+  const sidebar = document.querySelector('.c-sidebar');
+  const sideBarContainer = sidebar.querySelector('.sidebar-container');
+  const sendBtn = sidebar.querySelector('.c-toolbar .send');
 
   const players = 4; // GAME FOR x PLAYERS
   const deck = generate(players);
@@ -25,17 +29,14 @@ waitFor( () => {
     group.insertAdjacentHTML('beforeend', `<li class="c-gamer c-gamer-${i}"></li>`); // position in the table
   }
 
-  //pop each card from deck
+  //pop each card from deck 
   for (let j = deck.length -1; j > -1; j--) {
     currentPlayer = currentPlayer < players ? currentPlayer : 0;
     playerCards[currentPlayer].push(deck.pop());
     currentPlayer++;
   }
 
-  console.log("playerCards:");
-  console.log(playerCards);
-
-  //deliver ui deck based on position
+  //deliver ui deck based on user position
   [].slice.call(document.querySelectorAll('.c-gamer'))
     .filter(function (item, i) {
       game.insertAdjacentHTML('beforeend', barajaTpl(i, playerCards));
@@ -44,19 +45,43 @@ waitFor( () => {
       $el.css('left', window.getComputedStyle(item, null).left);
       $el.css('transform', window.getComputedStyle(item, null).transform);
       $el.baraja();
-      //var baraja = $el.baraja();
-      //baraja.fan();
       return item;
     });
 
-  $('.c-cemetery-cards').baraja();
+  //sidebar open
+  document.querySelector('.baraja-game:last-child').addEventListener('click', ({ target }) => {
+    const sideBarCards = orderCards(playerCards[playerCards.length-1]);
+    sideBarContainer.innerHTML = '';
 
-  /*$( '#add' ).on( 'click', function( event ) {
-    if( $( this ).hasClass( 'disabled' ) ) {
-      return false;
+    for (let i = 0; i < sideBarCards.length; i++) {
+      sideBarContainer.insertAdjacentHTML('beforeend', `<li><span class="overlay"></span><img src="/img/cards/${sideBarCards[i]}.png" alt="image1"></li>`);
     }
-    $( this ).addClass( 'disabled' );
-    baraja.add( $('<li><img src="images/6.jpg" alt="image6"/><h4>Serenity</h4><p>Truffaut wes anderson hoodie 3 wolf moon labore, fugiat lomo iphone eiusmod vegan.</p></li><li><img src="images/7.jpg" alt="image7"/><h4>Dark Honor</h4><p>Chillwave mustache pinterest, marfa seitan umami id farm-to-table iphone.</p></li><li><img src="images/8.jpg" alt="image8"/><h4>Nested Happiness</h4><p>Minim post-ironic banksy american apparel iphone wayfarers.</p></li><li><img src="images/9.jpg" alt="image9"/><h4>Cherry Country</h4><p>Sint vinyl Austin street art odd future id trust fund, terry richardson cray.</p></li>') );
+
+    target.closest('.baraja-game').classList.toggle('c-open');
+    sidebar.classList.toggle('c-open');
+
+    // card selector
+    const cardSelector = [].slice.call(sideBarContainer.querySelectorAll('li'));
+    for (let i = 0; i < cardSelector.length; i++) {
+      cardSelector[i].addEventListener('click', ({ target }) => {
+        target.closest('li').classList.toggle('c-selected');
+      });
+    }
+
+    //send to cemetery
+    sendBtn.addEventListener('click', () => {
+      for (let i = 0; i < cardSelector.length; i++) {
+        if (cardSelector[i].classList.contains('c-selected')) {
+          cardSelector[i].querySelector('.overlay').remove();
+          cardSelector[i].classList.remove('c-selected');
+          cemeteryDeck.add($(cardSelector[i].outerHTML));
+          cardSelector[i].remove();
+        }
+      }
+      sidebar.classList.toggle('c-open');
+      target.closest('.baraja-game').classList.toggle('c-open');
+      $(target.closest('.baraja-game')).baraja().close();
+    });
   });
-  */
 });
+
