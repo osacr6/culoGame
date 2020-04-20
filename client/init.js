@@ -11,7 +11,7 @@ waitFor( () => {
   const table = document.querySelector('.c-table');
   const group = table.querySelector('ul');
   const game = document.querySelector('.c-table-game');
-  
+
   const players = 4; // GAME FOR x PLAYERS
   const deck = generate(players);
   let playerCards = [];
@@ -25,12 +25,15 @@ waitFor( () => {
     group.insertAdjacentHTML('beforeend', `<li class="c-gamer c-gamer-${i}"></li>`); // position in the table
   }
 
-  //pop each card from deck 
+  //pop each card from deck
   for (let j = deck.length -1; j > -1; j--) {
     currentPlayer = currentPlayer < players ? currentPlayer : 0;
     playerCards[currentPlayer].push(deck.pop());
     currentPlayer++;
   }
+
+  console.log("playerCards:");
+  console.log(playerCards);
 
   //deliver ui deck based on position
   [].slice.call(document.querySelectorAll('.c-gamer'))
@@ -57,4 +60,3 @@ waitFor( () => {
   });
   */
 });
-
