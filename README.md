@@ -24,3 +24,4 @@ Dependencies
 
 ### libraries
 - https://tympanus.net/Development/Baraja/
+- https://github.com/richardschneider/cardsJS

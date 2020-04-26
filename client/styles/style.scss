@@ -1,8 +1,6 @@
 $prefix: 'c';
-
 @import 'baraja.scss';
-@import 'cards.scss';
-
+@import 'circle.scss';
 
 body {
   overflow-x: hidden;
@@ -32,84 +30,57 @@ li {
 
   &-table {
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 30%;
+    left: 120px;
+    transform: perspective(375px) rotateX(15deg);
   }
 
-  &-gamer {
-    position: absolute;
-  }
+  &-group {
 
-  &-group  {
+    &-4 {
+      @include on-circle($item-count: 4, $circle-size: 150px, $item-size: 60px);
 
-    &-4 li {
-    
-      &:nth-child(1) {
-        top: -130px;
-        left: -140px;
-        transform: rotate(90deg);
-      }
-      &:nth-child(2) {
-        top: -250px;
-        left: -25px;
-        transform: rotate(180deg);
-      }
-      &:nth-child(3) {
-        top: -80px;
-        left: 90px;
-        transform: rotate(270deg);
-      }
-      &:nth-child(4) {
-        top: 70px;
-        left: -25px;
-      }
-    }
+      li.#{$prefix}-gamer {
 
-    &-6 li {
-    
-      &:nth-child(1) {
-        top: -30px;
-        left: -140px;
-        transform: rotate(90deg);
-      }
-      &:nth-child(2) {
-        top: -180px;
-        left: -140px;
-        transform: rotate(90deg);
-      }
-      &:nth-child(3) {
-        top: -265px;
-        left: 0;
-        transform: rotate(180deg);
-      }
-      &:nth-child(4) {
-        top: -170px;
-        left: 70px;
-        transform: rotate(60deg);
-      }
-      &:nth-child(5) {
-        top: -15px;
-        left: 90px;
-        transform: rotate(130deg);
-      }
-      &:nth-child(6) {
-        top: 70px;
-        left: -25px;
+        &:nth-child(1) {
+          .baraja-game {
+            transform: rotate(270deg);
+          }
+        }
+        &:nth-child(2) {
+          .baraja-game {
+            transform: rotate(0deg);
+          }
+        }
+        &:nth-child(3) {
+          .baraja-game {
+            transform: rotate(90deg);
+          }
+        }
+        &:nth-child(4) {
+          .baraja-game {
+            transform: rotate(180deg);
+          }
+        }
       }
     }
   }
 
   &-cemetery {
     position: absolute;
-    width: 64px;
-    top: 40%;
-    left: 35%;
+    width: 40px;
+    top: 35%;
+    left: 45%;
 
     &-cards {
-      width: 100%;
+      padding: 0;
 
       img {
         width: 100%;
+      }
+
+      li {
+        position: absolute;
       }
     }
   }
@@ -161,4 +132,8 @@ li {
       float: right;
     }
   }
+}
+
+@media (max-width: 600px) {
+
 }
