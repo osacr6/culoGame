@@ -1,5 +1,4 @@
 # culoGame
-
 Enjoy Culo Game
 
 ## Technologies
@@ -23,5 +22,7 @@ Dependencies
 ```
 
 ### libraries
-- https://tympanus.net/Development/Baraja/
-- https://github.com/richardschneider/cardsJS
+- baraja: https://tympanus.net/Development/Baraja/
+- cards svg: https://github.com/richardschneider/cardsJS
+- database: https://github.com/mapbox/node-sqlite3/wiki
+- carousel: https://github.com/NickPiscitelli/Glider.js

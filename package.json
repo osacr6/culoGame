@@ -4,8 +4,9 @@
   "name": "CULO",
   "description": "Hoy si Serás presidente!",
   "scripts": {
-    "init-assets": "npx webpack",
-    "init-server": "node server.js",
+    "build": "npx webpack",
+    "server-dev": "node server.js",
+    "server-prod": "npx nodemon -x node server.js",
     "start": "start npm run init-assets && start npm run init-server"
   },
   "devDependencies": {
@@ -27,6 +28,8 @@
   },
   "dependencies": {
     "express": "^4.17.1",
-    "socket.io": "^2.3.0"
+    "nodemon": "^2.0.3",
+    "socket.io": "^2.3.0",
+    "sqlite3": "^4.1.1"
   }
 }

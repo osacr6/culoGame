@@ -23,7 +23,7 @@ app.use('/vendor', express.static('client/vendor'));
 
 // DEVUELVO MI INDEX.HTML CUANDO SE APUNTE A CUALQUIER RUTA
 app.get('/', (req, res) => {
-  res.sendFile(`${app.locals.ui}\\index.html`);
+  res.sendFile(`${app.locals.ui}/\index.html`);
 });
 
 // CONFIGURO EL PUERTO DE MI SERVIDOR
