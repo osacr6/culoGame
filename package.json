@@ -7,7 +7,7 @@
     "build": "npx webpack",
     "server-dev": "node server.js",
     "server-prod": "npx nodemon -x node server.js",
-    "start": "start npm run init-assets && start npm run init-server"
+    "start": "start npm run build && start npm run server-dev"
   },
   "devDependencies": {
     "@babel/core": "^7.1.5",

@@ -8,7 +8,7 @@ const app = express();
 
 // CONFIGURO LAS RUTAS DE MI API
 const api = require('./server/api.js');
-app.use('/game', api);
+app.use('/api', api);
 
 // CONFIGURO BODYPARSER PARA QUE PUEDA INTERPRETAR LOS DATOS
 // QUE LLEGAN POR HTTP
@@ -23,6 +23,7 @@ app.use('/vendor', express.static('client/vendor'));
 
 // DEVUELVO MI INDEX.HTML CUANDO SE APUNTE A CUALQUIER RUTA
 app.get('/', (req, res) => {
+  console.log('server.js => index.html');
   res.sendFile(`${app.locals.ui}/\index.html`);
 });
 
